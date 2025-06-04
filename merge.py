@@ -1,18 +1,21 @@
 import random
 import time
 
-lista_numeros = []
-
 #Gera a lista
-for numero in range(1, 100000):
-    lista_numeros.append(numero)
+# for numero in range(1, 100000):
+#     lista_numeros.append(numero)
 
 #Embaralha os números da lista
-random.shuffle(lista_numeros)
+# random.shuffle(lista_numeros)
 #Salva a lista embaralhada em um arquivo txt
-with open("lista_numeros_embaralhados.txt", "w") as arquivo:
-    for numero in lista_numeros:
-        arquivo.write(f"{numero}\n")
+# with open("lista_numeros_embaralhados.txt", "w") as arquivo:
+#     for numero in lista_numeros:
+#         arquivo.write(f"{numero}\n")
+
+#Lê a lista de números do arquivo txt
+with open("lista.txt", "r") as arquivo:
+    conteudo = arquivo.read()
+    lista = [int(i) for i in conteudo.split(", ")]
 
 #Função de ordenação --> Merge Sort
 def merge_sort(lista):
@@ -50,17 +53,17 @@ def merge(esquerda, direita):
 #Marca o tempo de início da ordenação
 inicio = time.time()
 #Ordena a lista utilizando merge sort
-lista_ordenada = merge_sort(lista_numeros)
+lista_ordenada = merge_sort(lista)
 #Marca o tempo de término da ordenação
 fim = time.time()
 
 #Imprime o tempo total de execução
 print("--------------------------------")
-print(f"Tempo de execução: {fim - inicio:.2f} segundos")
+print(f"Tempo de execução: {fim - inicio:.5f} segundos")
 print("--------------------------------")
 print(f"Quantidade de comparações: {contador}")
 
 #Salva a lista ordenada em um arquivo txt
-with open("numeros_ordenados.txt", "w") as arquivo:
-    for numero in lista_ordenada:
-        arquivo.write(f"{numero}\n")
+# with open("numeros_ordenados.txt", "w") as arquivo:
+#     for numero in lista_ordenada:
+#         arquivo.write(f"{numero}\n")
